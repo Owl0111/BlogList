@@ -7,12 +7,17 @@ blogRouter.get('/',(request,response)=>{
         response.json(blogs);
     });
 });
+
+blogRouter.delete('/:id',async (request,response)=> {
+    await Blog.findByIdAndDelete(request.params.id)
+    response.status(204).end();
+})
 blogRouter.post('/',(request,response)=>{
     const blog = new Blog({
         title: request.body.title,
         author: request.body.author,
         url: request.body.url,
-        likes: request.body.likes,
+        likes: request.body.likes||0,
     })
     blog.save().then(result=> response.status(201).json(result));
 });
