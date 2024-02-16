@@ -5,6 +5,10 @@ const blogSchema = new mongoose.Schema({
     author: String,
     url: String,
     likes: Number,
+    user: {
+        ref: 'User',
+        type: mongoose.Schema.Types.ObjectId,
+    }
 });
 
 blogSchema.set('toJSON',{
@@ -15,4 +19,4 @@ blogSchema.set('toJSON',{
     }
 })
 
-module.exports = mongoose.model('blog',blogSchema);
+module.exports = mongoose.model('Blog',blogSchema);

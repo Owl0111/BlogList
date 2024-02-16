@@ -4,9 +4,9 @@ const UserSchema = new mongoose.Schema({
     username: String,
     name: String,
     passwordHash: String,
-    notes: [
+    blogs: [
         {
-            ref: 'Note',
+            ref: 'Blog',
             type: mongoose.Schema.Types.ObjectId
 
         }
